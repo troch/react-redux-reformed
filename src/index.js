@@ -1,4 +1,4 @@
-import { validator } from './validate';
+import { createModelValidator, validator } from './validate';
 import {
     RESET_FORM_STATE,
     SET_FORM_STATE,
@@ -8,7 +8,6 @@ import {
     replaceFormState,
     resetFormState
 } from './actions';
-import createModelValidator from './validate';
 
 const shallowMerge = (left, right) => ({
     ...left,
@@ -72,7 +71,7 @@ function connectForm(formName, formSelector, validators = []) {
     
     const mergeProps = validators && validators.length
         ? ({ model }) => ({
-            form: validateModel(model)
+            modelValidity: validateModel(model)
         })
         : undefined;
 
