@@ -1,19 +1,23 @@
+[![Build Status](https://travis-ci.org/troch/react-redux-reformed.svg?branch=master)](https://travis-ci.org/troch/react-redux-reformed)
+
 # react-redux-reformed
 
-Forms with React and Redux made simple: start with the bare minimum, no magic, then __use composition__ (components, functions, global and local states) to solve more complex cases. This package has no external dependencies and will have a very little impact on your bundle (< 1.5kB gzipped).
+Forms with React and Redux made simple: start with the bare minimum, no magic, then __use composition__ (components, functions, global and local states) to create more complex forms. This package has no external dependencies and will have a very little impact on your bundle (< 1.5kB gzipped).
 
-__This package is similar to [react-reformed](https://github.com/davezuko/react-reformed), and I encourage you to look at it and read its README if you don't know it.__
+__This package is similar to [react-reformed](https://github.com/davezuko/react-reformed), and I encourage you to look at it and read its README.__
 
-This package contains:
+__This package contains:__
+
 - A reducer factory
 - A higher-order component wrapping `connect` (from react-redux package)
 - Validation helpers
 
-This package does not contain:
-- Components (you can easily create your own form components), whether it is for the web or native
-- DOM events handlers and UI elements state management and DOM event handlers (focused, blurred, touched, submitted, etc...): you can choose to include them in your redux store, or simply use local state
-- Async validation of input values: again, use state and component composition to solve those more complex problems
-- Currently doesn't work with nested objects (will be supported)
+__This package does not contain:__
+
+- Components: you can easily create your own form components, for native and web
+- Event handlers and UI elements state management (focused, blurred, touched, submitted, etc...): you can choose to include them in your redux store, or simply use local state
+- Async validation of input values: use state and component composition to solve those more complex problems
+- Currently doesn't work with nested objects
 
 
 ## Table of contents

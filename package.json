@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register 'test/index.js'",
-    "build": "babel src --out-dir ./"
+    "build": "babel src --out-dir ./",
+    "prepublish": "npm test && npm run build"
   },
   "devDependencies": {
     "babel-cli": "~6.24.1",
