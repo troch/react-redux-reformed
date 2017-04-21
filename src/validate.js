@@ -1,3 +1,5 @@
+const defaultModelValidity = { valid: true };
+
 export const validator = (fieldName, validatorFn, validatorName) => {
     const name = validatorName || validatorFn.name;
 
@@ -8,7 +10,7 @@ export const validator = (fieldName, validatorFn, validatorName) => {
         ? fieldName
         : [ fieldName ];
 
-    return (model, modelValidity) => {
+    return (model, modelValidity = defaultModelValidity) => {
         const values = fieldNames.map((_) => model[_]);
 
         const isValid = Boolean(validatorFn(...values));
@@ -19,16 +21,14 @@ export const validator = (fieldName, validatorFn, validatorName) => {
         };
 
         fieldNames.forEach((fieldName) => {
-            if (!form[fieldName]) {
-                modelValidity[fieldName] = {
-                    valid: true
-                };
+            if (!modelValidity[fieldName]) {
+                modelValidityCopy[fieldName] = defaultModelValidity;
             }
 
             modelValidityCopy[fieldName] = {
-                ...form[fieldName],
+                ...modelValidityCopy[fieldName],
                 [name]: isValid,
-                valid: form[fieldName].valid && isValid
+                valid: modelValidityCopy[fieldName].valid && isValid
             };
         });
 
@@ -41,8 +41,8 @@ export const isRequired = (fieldName) => validator(fieldName, (val) => Boolean(v
 export function createModelValidator(...validators) {
     return function validateModel(model) {
         return validators.reduce(
-            (modelValidity, validator) => validator(model, modelValidity),
-            { valid: true }
+            (modelValidity, validationFn) => validationFn(model, modelValidity),
+            defaultModelValidity
         );
     }
 }

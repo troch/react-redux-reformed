@@ -22,19 +22,18 @@ const defaultOptions = {
 function createFormReducer(formName, initialFormState = {}, options = {}) {
     const { resetActions, mergeState } = { ...defaultOptions, ...options };
     const resetArgs = typeof resetActions === 'string' ? [ resetActions ] : resetActions;
-    const shouldReset = (action) => {
+    const shouldReset = (action) =>
         resetArgs.some((resetArg) => typeof resetArg === 'string'
             ? action.type === resetArg
             : resetArg(action)
-        )
-    };
+        );
 
     return function (state = initialFormState, action) {
         if (!action) {
             return state;
         }
 
-        if (shouldReset()) {
+        if (shouldReset(action)) {
             return initialFormState;
         }
 

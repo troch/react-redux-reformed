@@ -7,7 +7,7 @@
   "author": "Thomas Roch <thomas.c.roch@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo 1",
+    "test": "mocha --compilers js:babel-core/register 'test/index.js'",
     "build": "babel src --out-dir ./"
   },
   "devDependencies": {
