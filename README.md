@@ -184,7 +184,7 @@ You might want to compose selectors and actions together in your own `connect` H
 ### createModelValidator(...validators)
 
 ```js
-import { createModelValidator, isRequi } from 'react-redux-reformed/validate';
+import { createModelValidator, isRequired } from 'react-redux-reformed/validate';
 
 const validateModel = createModelValidator(isRequired('name'));
 
