@@ -1,6 +1,6 @@
 {
   "name": "react-redux-reformed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React redux forms made simple",
   "main": "index.js",
   "repository": "git@github.com:troch/react-redux-reformed.git",
@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register 'test/index.js'",
     "build": "babel src --out-dir ./",
-    "prepublish": "npm test && npm run build"
+    "prepublish": "npm test && npm run build",
+    "clog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "devDependencies": {
     "babel-cli": "~6.24.1",
