@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { createModelValidator, validator } from './validate';
 import {
     RESET_FORM_STATE,
@@ -67,7 +68,7 @@ function connectForm(formName, formSelector, validators = []) {
         replaceFormState: replaceFormState(formName),
         resetFormState: resetFormState(formName)
     };
-    
+
     const mergeProps = validators && validators.length
         ? ({ model }) => ({
             modelValidity: validateModel(model)
