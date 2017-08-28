@@ -70,8 +70,11 @@ function connectForm(formName, formSelector, validators = []) {
     };
 
     const mergeProps = validators && validators.length
-        ? ({ model }) => ({
-            modelValidity: validateModel(model)
+        ? (stateProps, dispatchProps, ownProps = {}) => ({
+            modelValidity: validateModel(stateProps.model),
+            ...stateProps,
+            ...dispatchProps,
+            ...ownProps
         })
         : undefined;
 
