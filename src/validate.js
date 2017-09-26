@@ -6,9 +6,7 @@ export const validator = (fieldName, validatorFn, validatorName) => {
     if (!name) {
         throw new Error(`[validator][unnamed] No 'validatorName' (3rd argument) or named validator function was provided`);
     }
-    const fieldNames = typeof fieldName === 'array'
-        ? fieldName
-        : [ fieldName ];
+    const fieldNames = [].concat(fieldName);
 
     return (model, modelValidity = defaultModelValidity) => {
         const values = fieldNames.map((_) => model[_]);
